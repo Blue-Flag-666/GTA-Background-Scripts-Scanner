@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {request} from 'undici';
 
-const STARTING_VERSION = 0;
+const STARTING_VERSION = 2800;
 const ENDING_VERSION = 3000;
 const SUB_ID_MAX = 10;
 
