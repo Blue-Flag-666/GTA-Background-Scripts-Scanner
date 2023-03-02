@@ -4,8 +4,8 @@ import path from 'node:path';
 import {request} from 'undici';
 
 const STARTING_VERSION = 2800;
-const ENDING_VERSION = 3000;
-const SUB_ID_MAX = 10;
+const ENDING_VERSION = 2900;
+const SUB_ID_MAX = 20;
 
 let json_path = path.join('bgscripts', 'bgscripts.json');
 let json_arr_old = [];
