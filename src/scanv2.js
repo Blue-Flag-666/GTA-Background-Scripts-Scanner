@@ -14,13 +14,26 @@ let json_arr = [];
 async function get_script_sub(version, subId)
 {
 	const RPF_URL = `https://prod.cloud.rockstargames.com/titles/gta5/pcros/bgscripts/bg_ng_${version}_${subId}.rpf`;
-
-	const response = await request(RPF_URL);
-	if (response.statusCode !== 200)
+	let response;
+	
+	for (let tries = 1; tries <= 3; tries++)
 	{
-		if (response.statusCode !== 404)
+		response = await request(RPF_URL);
+		if (response.statusCode === 200)
 		{
-			core.setFailed(`Failed to fetch bgscript: ${response.statusCode} @ ${RPF_URL}`);
+			break;
+		}
+		else if (response.statusCode !== 404 && response.statusCode !== 500)
+		{
+			if (tries == 3)
+			{
+				core.setFailed(`Failed to fetch bgscript: ${response.statusCode} @ ${RPF_URL}`);
+			}
+			else
+			{
+				core.info(`Failed to fetch bgscript: ${response.statusCode} @ ${RPF_URL}, retrying`);
+				continue;
+			}
 		}
 		return;
 	}
