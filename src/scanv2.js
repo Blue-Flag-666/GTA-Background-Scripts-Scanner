@@ -3,8 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {request} from 'undici';
 
-const STARTING_VERSION = 2850;
-const ENDING_VERSION = 3200;
+const STARTING_VERSION = 3000;
+const ENDING_VERSION = 3500;
 const SUB_ID_MAX = 20;
 
 let json_path = path.join('bgscripts', 'bgscripts.json');
